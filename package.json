@@ -1,0 +1,24 @@
+{
+  "name": "express-backend",
+  "version": "1.0.0",
+  "description": "A sample express backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neerajdask/order-manager-backend.git"
+  },
+  "author": "Neeraj Das K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neerajdask/order-manager/issues"
+  },
+  "homepage": "https://github.com/neerajdask/order-manager#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase-admin": "^9.6.0"
+  }
+}

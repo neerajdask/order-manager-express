@@ -11,10 +11,17 @@ route.get('/orders', async (req, res) => {
 
     let data = [];
     snapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
         data.push(doc.data());
     });
-    res.status(200).send(data);
+
+    data = data.filter(order=>{
+        if(order.uid) {
+            return order;
+        }
+    })
+
+    console.log(data);
+    res.status(200).send(data.splice(0,20));
 });
 
 route.post('/orders', async (req, res) => {

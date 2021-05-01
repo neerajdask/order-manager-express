@@ -5,7 +5,7 @@ const ordersRouter = require('./routes/ordersRoute');
 const usersRouter = require('./routes/userRoute');
 
 const app = express();
-const PORT = 3000 || process.env.port;
+const PORT = 5000 || process.env.port;
 
 app.use(express.json());
 

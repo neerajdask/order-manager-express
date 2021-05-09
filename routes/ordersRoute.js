@@ -20,6 +20,12 @@ route.get("/orders", async (req, res) => {
     });
   });
 
+  if(!snapshot || !data) {
+    return res.status(404).send({
+      error: 'No data found.'
+    })
+  }
+
   uniqueOrdersByID = _.uniqBy(data, "uid");
   res.status(200).send(uniqueOrdersByID);
 });
@@ -29,20 +35,19 @@ route.post("/orders", async (req, res) => {
     ...req.body,
   });
   if (!addResp) {
-    return res.status(500).send("Something went wrong");
+    return res.status(422).send({
+      error: "Something went wrong. Could not add the order."
+    });
   }
-  console.log('document added withid: ', addResp.id)
   const orderRef = db.collection("orders").doc((addResp.id).toString());
   const updateResp = await orderRef.update({
     uid: addResp.id,
   });
-  console.log("Added document with ID: ", addResp.id);
   return res.status(200).send({ addResp, updateResp });
 });
 
 route.put("/orders/:id", async (req, res) => {
   const docID = req.params.id;
-  console.log(req.body);
   const orderRef = db.collection("orders").doc(docID);
 
   const resp = await orderRef.update({
@@ -52,7 +57,7 @@ route.put("/orders/:id", async (req, res) => {
 
   if (!resp) {
     return res.status(500).send({
-      err: "Something went wrong",
+      error: "Something went wrong",
     });
   }
   res.status(200).send(resp);

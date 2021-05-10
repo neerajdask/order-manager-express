@@ -6,6 +6,10 @@ const admin = require("../firebase/index");
 const db = admin.firestore();
 const route = new express.Router();
 
+route.get("/", (req, res) => {
+  res.status(200).send("Hello User, this your Express backend.");
+});
+
 route.get("/orders", async (req, res) => {
   const orderRef = db.collection("orders");
   const snapshot = await orderRef.get();

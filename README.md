@@ -28,4 +28,4 @@ You will also see any lint errors in the console.
 
 ## Deployment
 
-The app has been deployed here at Heroku: Open [https://construyo-react-app.herokuapp.com/login](https://construyo-react-app.herokuapp.com/login) to view the application.
+The app has been deployed here at Heroku: Open [https://construyo-express-backend.herokuapp.com/](hhttps://construyo-express-backend.herokuapp.com/) to view the application.
